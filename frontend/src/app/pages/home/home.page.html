@@ -1,0 +1,120 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Chat App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Chat App</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <swiper-container [slidesPerView]="5">
+    <swiper-slide>
+      <div>
+        <img
+          alt=""
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        />
+      </div>
+      <ion-label>Alaa</ion-label>
+    </swiper-slide>
+    <swiper-slide>
+      <div>
+        <img
+          alt=""
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        />
+      </div>
+
+      <ion-label>Nancy</ion-label>
+    </swiper-slide>
+    <swiper-slide>
+      <div>
+        <img
+          alt=""
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        />
+      </div>
+
+      <ion-label>George</ion-label></swiper-slide
+    >
+    <swiper-slide>
+      <div>
+        <img
+          alt=""
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        />
+      </div>
+
+      <ion-label>Ahmad</ion-label></swiper-slide
+    >
+    <swiper-slide>
+      <div>
+        <img
+          alt=""
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        />
+      </div>
+
+      <ion-label>Sarah</ion-label></swiper-slide
+    >
+    <swiper-slide>
+      <div>
+        <img
+          alt=""
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        />
+      </div>
+
+      <ion-label>Mohamad</ion-label></swiper-slide
+    >
+    <swiper-slide>
+      <div>
+        <img
+          alt=""
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        />
+      </div>
+
+      <ion-label>Ghassan</ion-label></swiper-slide
+    >
+    <swiper-slide>
+      <div>
+        <img
+          alt=""
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        />
+      </div>
+
+      <ion-label>Najwa</ion-label></swiper-slide
+    >
+  </swiper-container>
+
+  <h1 class="page-title">Messages</h1>
+
+  <ion-list [inset]="true">
+    <ion-item-sliding>
+      <ion-item [button]="true" href="/conversation/1">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img
+            alt=""
+            src="https://ionicframework.com/docs/img/demos/avatar.svg"
+          />
+        </ion-avatar>
+        <ion-label>
+          <h3>Rick Astley</h3>
+          <p>hey</p>
+        </ion-label>
+        <ion-note slot="end">18:34</ion-note>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

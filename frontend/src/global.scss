@@ -1,0 +1,101 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+:root {
+    --ion-color-primary: #c897d8;
+    --ion-color-primary-rgb: 200, 151, 216;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+  }
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+ion-toolbar {
+  --background: #c897d8;
+}
+
+.page-title {
+  font-size: 18px;
+  color: #c897d8;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+
+swiper-container {
+  margin-top: 20px;
+}
+
+swiper-slide {
+  text-align: center;
+}
+
+swiper-slide > div {
+  position: relative;
+}
+
+swiper-slide > div::after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: 5px;
+  left: 15px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+swiper-slide ion-label {
+  font-size: 14px;
+}
+
+swiper-slide img {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+ion-title.title-large {
+  color: #c897d8;
+  font-size: 30px;
+}
+
+ion-title {
+  --color: #fff;
+}
+
+ion-item::part(native) {
+  padding-left: 0;
+}
+
+.convo-icon{
+    padding: 0;
+}
