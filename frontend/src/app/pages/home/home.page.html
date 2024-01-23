@@ -97,18 +97,18 @@
 
   <ion-list [inset]="true">
     <ion-item-sliding>
-      <ion-item [button]="true" href="/conversation/1">
+      <ion-item [button]="true" href="/conversation/1" *ngFor="let item of users">
         <ion-avatar aria-hidden="true" slot="start">
           <img
             alt=""
-            src="https://ionicframework.com/docs/img/demos/avatar.svg"
+            [src]="imgUrl + '/profiles/' + item.profile"
           />
         </ion-avatar>
         <ion-label>
-          <h3>Rick Astley</h3>
-          <p>hey</p>
+          <h3>{{item.username}}</h3>
+          <p>{{item.messages[item.messages.length - 1]?.text}}</p>
         </ion-label>
-        <ion-note slot="end">18:34</ion-note>
+        <ion-note slot="end">{{item.time}}</ion-note>
       </ion-item>
       <ion-item-options slot="end">
         <ion-item-option color="danger" expandable="true">
