@@ -26,7 +26,6 @@ export class ChatGateway {
   server: Server;
   @SubscribeMessage('sendMessage')
   async handleMessage(client: any, payload: any) {
-    console.log(payload);
     let res = this.msgRepository.create(payload);
     res = await this.msgRepository.save(payload);
     if (res) this.server.emit('message', payload);

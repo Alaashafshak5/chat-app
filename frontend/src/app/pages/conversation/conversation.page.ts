@@ -22,23 +22,21 @@ export class ConversationPage implements OnInit {
   message: string | undefined;
   messages: any = []
   imgUrl = environment.imgUrl;
-  currentUserId = 1
-  chats = [
-    { id: 1, sender: true, message: 'hi' },
-    { id: 2, sender: false, message: 'hi there!' },
-  ];
+  currentUserId = environment.currentUserId
+
 
   constructor(private http: HttpClient, private router: ActivatedRoute, private socket: Socket,) {}
 
   getDetails(id: number) {
-    return this.http.get(`${environment.baseUrl}/user/get/${id}`);
+    return this.http.get(`${environment.baseUrl}/user/get/${this.currentUserId}/${id}`);
   }
 
   ngOnInit() {
     this.socket.connect();
     this.id = this.router.snapshot.params['id'];
     this.getDetails(this.id).subscribe((res: any) => {
-      this.user = res.data;
+      console.log(res)
+      this.user = res.data.user;
       this.messages = res.data.messages
     });
     this.socket.fromEvent('message').subscribe((message: any) => {

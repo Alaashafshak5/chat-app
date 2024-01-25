@@ -1,0 +1,18 @@
+<ion-content [fullscreen]="true">
+  <h1 class="page-title">Log In using your account</h1>
+
+  <ion-list [inset]="true">
+    <ion-item
+      [button]="true"
+      (click)="login(item.id)"
+      *ngFor="let item of users"
+    >
+      <ion-avatar aria-hidden="true" slot="start">
+        <img alt="" [src]="imgUrl + '/profiles/' + item.profile" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{item.username}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

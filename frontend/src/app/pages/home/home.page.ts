@@ -6,7 +6,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,12 +21,12 @@ export class HomePage implements OnInit {
   users: any = [];
   online: any = [];
   imgUrl = environment.imgUrl;
-  currentUserId = 1;
+  currentUserId = environment.currentUserId;
 
   constructor(
     private http: HttpClient,
     private datePipe: DatePipe,
-    private router: Router
+    private router: Router,
   ) {}
 
   getFormattedDate(date: string | number | Date) {
@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
   }
 
   getContacts(): Observable<Object> {
-    return this.http.get(`${environment.baseUrl}/user/get-all`);
+    return this.http.get(`${environment.baseUrl}/user/get-user-contacts/${this.currentUserId}`);
   }
 
   goToChat(id: number) {
@@ -48,7 +48,6 @@ export class HomePage implements OnInit {
       this.online = res.data.filter(
         (element: { online: number }) => element.online === 1
       );
-      console.log(this.online);
     });
   }
 }
