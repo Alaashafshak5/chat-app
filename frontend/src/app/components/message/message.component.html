@@ -1,17 +1,17 @@
 <ion-item
   lines="none"
-  [class]="!chat?.sender ? 'sender' : 'user'"
+  [class]="chat?.senderId != currentUserId ? 'sender' : 'user'"
 >
   <ion-label
-    [slot]="chat?.sender ? 'end' : 'start'"
+    [slot]="chat?.senderId == currentUserId ? 'end' : 'start'"
     class="ion-text-wrap"
   >
-    <ion-text>{{ chat?.message }}</ion-text>
+    <ion-text>{{ chat?.text }}</ion-text>
     <ion-note>
       <small>10:00AM</small>
       <ion-icon
-        *ngIf="chat?.sender"
-        [color]="chat?.sender ? 'light' : 'primary'"
+        *ngIf="chat?.senderId == currentUserId"
+        [color]="chat?.senderId == currentUserId ? 'light' : 'primary'"
         name="checkmark-done-outline"
       ></ion-icon>
     </ion-note>

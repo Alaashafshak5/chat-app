@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,27 +15,40 @@ import { Observable } from 'rxjs';
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [DatePipe],
 })
 export class HomePage implements OnInit {
-  users:any = [];
-  imgUrl = environment.imgUrl
+  users: any = [];
+  online: any = [];
+  imgUrl = environment.imgUrl;
+  currentUserId = 1;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private datePipe: DatePipe,
+    private router: Router
+  ) {}
+
+  getFormattedDate(date: string | number | Date) {
+    return this.datePipe.transform(date, 'HH:mm');
+  }
 
   getContacts(): Observable<Object> {
-    const headerDict = {
-      'Access-Control-Allow-Headers': '*',
-    };
-
-    const requestOptions = {
-      headers: new HttpHeaders(headerDict),
-    };
-
-    return this.http.get(`${environment.baseUrl}/user/get-all`, requestOptions);
+    return this.http.get(`${environment.baseUrl}/user/get-all`);
   }
+
+  goToChat(id: number) {
+    this.router.navigateByUrl(`/conversation/${id}`);
+  }
+
   ngOnInit() {
-    this.getContacts().subscribe((res: any) => {console.log(res); 
-    this.users = [...this.users, ...res.data]
+    this.getContacts().subscribe((res: any) => {
+      console.log(res);
+      this.users = [...this.users, ...res.data];
+      this.online = res.data.filter(
+        (element: { online: number }) => element.online === 1
+      );
+      console.log(this.online);
     });
   }
 }

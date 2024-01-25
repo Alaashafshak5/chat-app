@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Message } from 'entities/Message';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
+import { ChatGateway } from './websockets/chat.gateway';
 
 @Module({
   imports: [
     UserModule,
+    TypeOrmModule.forFeature([Message]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -18,6 +21,6 @@ import { UserModule } from './user/user.module';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ChatGateway],
 })
 export class AppModule {}

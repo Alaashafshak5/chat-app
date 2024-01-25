@@ -1,6 +1,7 @@
 
-backend
 frontend/node_modules
+backend/node_modules
+backend/dist
 
 frontend/*.log
 frontend/log.txt

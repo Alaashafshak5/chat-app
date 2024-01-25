@@ -13,9 +13,11 @@ import { IonicModule } from '@ionic/angular';
 })
 export class MessageComponent  implements OnInit {
   @Input() chat: any;
-  
+  currentUserId = 1
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.chat)
+  }
 
 }

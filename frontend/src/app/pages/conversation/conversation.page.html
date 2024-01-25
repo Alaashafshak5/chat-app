@@ -3,36 +3,34 @@
     <ion-buttons slot="start">
       <ion-back-button default-href="#"></ion-back-button>
       <ion-button>
-        <ion-icon slot="icon-only" size="large" name="person-circle"></ion-icon>
+        <img alt="" [src]="imgUrl + '/profiles/' + user?.profile" class="userImg"/>
       </ion-button>
     </ion-buttons>
-    <ion-title>Rick Astley</ion-title>
+    <ion-title>{{user?.username}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"> 
-  <ion-list 
-  lines="none" 
-  *ngIf="(chats) as chat$">
-  <ion-item-group class="chats-group" *ngFor="let chat of chat$">
-    <app-message [chat]="chat"></app-message>
-  </ion-item-group>
-</ion-list>
+<ion-content [fullscreen]="true">
+  <ion-list lines="none" *ngIf="(messages) as items">
+    <ion-item-group class="chats-group" *ngFor="let item of items">
+      <app-message [chat]="item"></app-message>
+    </ion-item-group>
+  </ion-list>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar color="light">
-    <ion-textarea 
-      autoGrow 
-      rows="1" 
-      placeholder="Send message" 
+    <ion-textarea
+      autoGrow
+      rows="1"
+      placeholder="Send message"
       [(ngModel)]="message"
       class="area-msg"
-      >
+    >
     </ion-textarea>
     <ion-buttons slot="end">
       <ion-fab-button size="small" color="primary" (click)="sendMessage()">
-        <ion-icon name="send" size="small" ></ion-icon>
+        <ion-icon name="send" size="small"></ion-icon>
       </ion-fab-button>
     </ion-buttons>
   </ion-toolbar>

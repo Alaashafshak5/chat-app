@@ -17,4 +17,9 @@ export class UserService {
       relations: { messages: true },
     });
   }
+
+  //Get user details 
+  async getUserDetails(id: number){
+    return await this.userRepository.findOne({where: {id: id}, relations: {messages: true}})
+  }
 }

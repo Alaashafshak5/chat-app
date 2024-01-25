@@ -9,7 +9,10 @@ export class MessageService {
     private msgRepository: Repository<Message>,
   ) { }
  
-  //Get User Messages
+  //Send Message
+  async sendMessage(){
+    
+  }
  
 
 }

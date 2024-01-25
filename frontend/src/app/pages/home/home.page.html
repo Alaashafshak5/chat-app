@@ -12,92 +12,23 @@
   </ion-header>
 
   <swiper-container [slidesPerView]="5">
-    <swiper-slide>
+    <swiper-slide *ngFor="let item of online">
       <div>
         <img
           alt=""
-          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+          [src]="imgUrl + '/profiles/' + item.profile"
         />
       </div>
-      <ion-label>Alaa</ion-label>
+      <ion-label>{{item.username}}</ion-label>
     </swiper-slide>
-    <swiper-slide>
-      <div>
-        <img
-          alt=""
-          src="https://ionicframework.com/docs/img/demos/avatar.svg"
-        />
-      </div>
-
-      <ion-label>Nancy</ion-label>
-    </swiper-slide>
-    <swiper-slide>
-      <div>
-        <img
-          alt=""
-          src="https://ionicframework.com/docs/img/demos/avatar.svg"
-        />
-      </div>
-
-      <ion-label>George</ion-label></swiper-slide
-    >
-    <swiper-slide>
-      <div>
-        <img
-          alt=""
-          src="https://ionicframework.com/docs/img/demos/avatar.svg"
-        />
-      </div>
-
-      <ion-label>Ahmad</ion-label></swiper-slide
-    >
-    <swiper-slide>
-      <div>
-        <img
-          alt=""
-          src="https://ionicframework.com/docs/img/demos/avatar.svg"
-        />
-      </div>
-
-      <ion-label>Sarah</ion-label></swiper-slide
-    >
-    <swiper-slide>
-      <div>
-        <img
-          alt=""
-          src="https://ionicframework.com/docs/img/demos/avatar.svg"
-        />
-      </div>
-
-      <ion-label>Mohamad</ion-label></swiper-slide
-    >
-    <swiper-slide>
-      <div>
-        <img
-          alt=""
-          src="https://ionicframework.com/docs/img/demos/avatar.svg"
-        />
-      </div>
-
-      <ion-label>Ghassan</ion-label></swiper-slide
-    >
-    <swiper-slide>
-      <div>
-        <img
-          alt=""
-          src="https://ionicframework.com/docs/img/demos/avatar.svg"
-        />
-      </div>
-
-      <ion-label>Najwa</ion-label></swiper-slide
-    >
+    
   </swiper-container>
 
   <h1 class="page-title">Messages</h1>
 
   <ion-list [inset]="true">
     <ion-item-sliding>
-      <ion-item [button]="true" href="/conversation/1" *ngFor="let item of users">
+      <ion-item [button]="true" (click)="goToChat(item.id)" *ngFor="let item of users">
         <ion-avatar aria-hidden="true" slot="start">
           <img
             alt=""
@@ -105,10 +36,16 @@
           />
         </ion-avatar>
         <ion-label>
-          <h3>{{item.username}}</h3>
-          <p>{{item.messages[item.messages.length - 1]?.text}}</p>
+          <h2>{{item.username}}</h2>
+          <p>
+            <ion-row class="ion-align-items-center">
+            <ion-icon
+            *ngIf="item.messages[item.messages.length - 1]?.senderId == currentUserId"
+            name="checkmark-done-outline"
+          ></ion-icon>{{item.messages[item.messages.length - 1]?.text}}
+        </ion-row></p>
         </ion-label>
-        <ion-note slot="end">{{item.time}}</ion-note>
+        <ion-note slot="end">{{ getFormattedDate(item.messages[item.messages.length - 1]?.time) }}</ion-note>
       </ion-item>
       <ion-item-options slot="end">
         <ion-item-option color="danger" expandable="true">
