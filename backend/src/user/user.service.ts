@@ -22,15 +22,32 @@ export class UserService {
 
   //Get user contacts
   async getUsersContacts(currentUserId: number) {
-    return await this.userRepository.find({
+    const users = await this.userRepository.find({
       where: { id: Not(currentUserId) },
-      relations: { messages: true },
     });
+
+    let usersMessages = []
+
+    if(users){
+      for (const contact of users) {
+        const messages = await this.msgRepository.find({
+          where: [
+            { senderId: currentUserId, receiverId: contact.id },
+            { senderId: contact.id, receiverId: currentUserId },
+          ],
+          order: {
+            time: 'DESC', // or 'DESC' based on your requirement
+          },
+        });
+        usersMessages.push(messages)
+      }
+
+    }
+    return {users, usersMessages}
   }
 
   //Get user details
   async getUserDetails(currentUserId: number, id: number) {
-    console.log(currentUserId)
     let user = await this.userRepository.findOne({
       where: { id: id },
     });

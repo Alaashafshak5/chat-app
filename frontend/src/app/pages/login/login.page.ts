@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
 
   login(id: number){
     this.router.navigateByUrl(`/home`);
-    environment.currentUserId = id
+    localStorage.setItem("id", id.toString())
   }
 
   ngOnInit() {

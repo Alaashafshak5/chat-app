@@ -8,7 +8,7 @@
   >
     <ion-text>{{ chat?.text }}</ion-text>
     <ion-note>
-      <small>10:00AM</small>
+      <small>{{ getFormattedDate(chat?.time) }}</small>
       <ion-icon
         *ngIf="chat?.senderId == currentUserId"
         [color]="chat?.senderId == currentUserId ? 'light' : 'primary'"

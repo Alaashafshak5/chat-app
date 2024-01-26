@@ -22,7 +22,7 @@ export class ConversationPage implements OnInit {
   message: string | undefined;
   messages: any = []
   imgUrl = environment.imgUrl;
-  currentUserId = environment.currentUserId
+  currentUserId = localStorage.getItem("id")
 
 
   constructor(private http: HttpClient, private router: ActivatedRoute, private socket: Socket,) {}

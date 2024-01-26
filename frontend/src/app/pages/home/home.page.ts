@@ -21,7 +21,8 @@ export class HomePage implements OnInit {
   users: any = [];
   online: any = [];
   imgUrl = environment.imgUrl;
-  currentUserId = environment.currentUserId;
+  messages: any = []
+  currentUserId = localStorage.getItem("id");
 
   constructor(
     private http: HttpClient,
@@ -43,9 +44,10 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.getContacts().subscribe((res: any) => {
-      console.log(res);
-      this.users = [...this.users, ...res.data];
-      this.online = res.data.filter(
+      console.log(res)
+      this.users = [...this.users, ...res.data.users];
+      this.messages = [...this.messages, ...res.data.usersMessages];
+      this.online = res.data.users.filter(
         (element: { online: number }) => element.online === 1
       );
     });

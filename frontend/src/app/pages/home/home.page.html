@@ -28,7 +28,7 @@
 
   <ion-list [inset]="true">
     <ion-item-sliding>
-      <ion-item [button]="true" (click)="goToChat(item.id)" *ngFor="let item of users">
+      <ion-item [button]="true" (click)="goToChat(item.id)" *ngFor="let item of users ; let i = index">
         <ion-avatar aria-hidden="true" slot="start">
           <img
             alt=""
@@ -40,12 +40,12 @@
           <p>
             <ion-row class="ion-align-items-center">
             <ion-icon
-            *ngIf="item.messages[item.messages.length - 1]?.senderId == currentUserId"
+            *ngIf="messages[i].length !== 0 && messages[i][0].senderId == currentUserId"
             name="checkmark-done-outline"
-          ></ion-icon>{{item.messages[item.messages.length - 1]?.text}}
+          ></ion-icon>{{messages[i][0]?.text}}
         </ion-row></p>
         </ion-label>
-        <ion-note slot="end">{{ getFormattedDate(item.messages[item.messages.length - 1]?.time) }}</ion-note>
+        <ion-note slot="end">{{ getFormattedDate(messages[i][0]?.time) }}</ion-note>
       </ion-item>
       <ion-item-options slot="end">
         <ion-item-option color="danger" expandable="true">

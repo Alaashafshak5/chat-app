@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  currentUserId: 0,
   baseUrl: "http://localhost:3000",
   imgUrl: "http://localhost/chat-app/backend/uploads"
 };
