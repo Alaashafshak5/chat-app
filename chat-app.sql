@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 26, 2024 at 05:18 PM
+-- Generation Time: Jan 26, 2024 at 07:46 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.4.0
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   PRIMARY KEY (`id`),
   KEY `receiver_id` (`receiver_id`),
   KEY `sender_id` (`sender_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message`
@@ -53,7 +53,9 @@ INSERT INTO `message` (`id`, `text`, `sender_id`, `receiver_id`, `time`) VALUES
 (16, 'heyyyy', 1, 2, '2024-01-26 17:00:13'),
 (17, 'Helloooo', 2, 1, '2024-01-26 17:00:51'),
 (18, 'what time is it', 2, 1, '2024-01-26 17:05:42'),
-(19, ' its 7:06', 1, 2, '2024-01-26 17:06:14');
+(19, ' its 7:06', 1, 2, '2024-01-26 17:06:14'),
+(21, 'Test', 2, 3, '2024-01-26 19:07:04'),
+(22, 'Test', 5, 4, '2024-01-26 19:07:04');
 
 -- --------------------------------------------------------
 
